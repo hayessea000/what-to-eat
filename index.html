@@ -30,15 +30,15 @@
         <p>This is a recipe finder based on the MealDB API. To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p>
 
         <form id = "searchform">
-            <input type = "text" placeholder = "Search Criteria"/>
-            <select>
+            <input type = "text" placeholder = "Search Criteria" id = "searchinput"/>
+            <select id = "searchtype">
                 <option value="" disabled selected>Search by...</option>
                 <option value ="i">Ingredient</option>
                 <option value ="c">Category</option>
                 <option value ="a">Area</option>
                 <option value ="s">Name</option>
             </select>
-            <button id = "submit-btn">Search</button>
+            <button id = "submit-btn" type = "submti">Search</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
