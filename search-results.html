@@ -20,11 +20,49 @@
     rel="stylesheet"
   />
   <link href = "assets/css/search-result.css" rel = "stylesheet"/>
+  <link href = "assets/css/reset.css" rel = "stylesheet"/>
 
     <title>Document</title>
 </head>
 <body>
-    <h1>search</h1>
+    <header class="flex-row align-center justify-center">
+        <h1 class="align-center justify-center">What to Eat</h1>
+        <h2>A recipe finder based on MealDB API</h2>
+    </header>
+    <div class="row">
+        <div class="col-2">
+
+            <p>To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p>
+            
+            <form id = "searchform" class="row">
+                <input class="col-12" type = "text" placeholder = "Search Criteria"/>
+                <select class="col-12">
+                    <option value="" disabled selected>Search by...</option>
+                    <option value ="i">Ingredient</option>
+                    <option value ="c">Category</option>
+                    <option value ="a">Area</option>
+                    <option value ="s">Name</option>
+                </select>
+                <button class="col-12" id = "submit-btn">Search</button>
+            </form>
+            <div class="row">
+                <h2 class="col-12">Saved Meal</h2>
+                <div >
+                    <p>image</p>
+                    <p>name</p>
+                    <p>date saved</p>
+                </div>
+                <div >
+                    <p>image</p>
+                    <p>name</p>
+                    <p>date saved</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div>dfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/search-result.js"></script>
