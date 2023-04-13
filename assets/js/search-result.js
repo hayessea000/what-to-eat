@@ -11,6 +11,8 @@ var searchParam
 var type
 var searchResults = $("#search-cards")
 var mealArr
+var recipe
+var searchCards
 
 // I = ingredient
 // C = category
@@ -53,7 +55,7 @@ var getApi = function () {
 
 var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
-        var searchCards = $("<section>")
+        searchCards = $("<section>")
         searchCards.attr("style", "margin: 10px;")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
@@ -77,15 +79,35 @@ var generateCards = function(){
                 return response.json();
             })
             .then (function (data){
-                var recipe = data.meals[0]
+                recipe = data.meals[0]
                 console.log(recipe);
-                var leaderboard = document.querySelector("#search-cards");
-                leaderboard.innerHTML = "";
+
+                searchResults.html("")
+
+                generatefinalCard();
             })
         }
     )
 }
 
+var generatefinalCard = function(){
+    var recipeImage = $("<img>")
+    recipeImage.attr("src", `${recipe.strMealThumb}`)
+
+    var recipeTitle = $("<h3>")
+    recipeTitle.text(`${recipe.strMeal}`)
+
+    var ingredientList = $("<ul>")
+    
+    var ingredientItem = $("<li>")
+    ingredientItem.text(`${recipe.strMeasure1} ` + `${recipe.strIngredient1}`)
+    ingredientList.append(ingredientItem)
+
+    var instructions = $("<div>")
+    instructions.text(`${recipe.strInstructions}`)
+
+    searchResults.append(recipeImage, recipeTitle, ingredientList, instructions)
+}   
 
 
 getParameters();
