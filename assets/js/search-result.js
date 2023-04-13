@@ -54,10 +54,39 @@ var getApi = function () {
 var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
         var searchCards = $("<section>")
-        searchCards.text("lorem ipsum")
-        searchCards.attr("style", "background-color: black; margin: 10px; color: white")
+        searchCards.attr("style", "margin: 10px;")
+        var foodImage = $("<img>")
+        foodImage.attr("src", `${mealArr[i].strMealThumb}`)
+        var foodName = $("<p>")
+        foodName.text(`${mealArr[i].strMeal}`)
+        var foodButton = $("<button>")
+        foodButton.attr("data-value",`${mealArr[i].idMeal}` )
+        foodButton.addClass("foodCard")
+        foodButton.text("Show the Recipe")
+        searchCards.append(foodImage)
+        searchCards.append(foodName)
+        searchCards.append(foodButton)
         searchResults.append(searchCards)
-}}
+    }
+    var searchResultsCard =$(".foodCard")
+    searchResultsCard.on("click", function(event){
+            var clickTarget =  event.target
+            var seachByName = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${clickTarget.getAttribute("data-value")}`
+            fetch(seachByName)
+            .then (function (response) {
+                return response.json();
+            })
+            .then (function (data){
+                var recipe = data.meals[0]
+                console.log(recipe);
+                var leaderboard = document.querySelector("#search-cards");
+                leaderboard.innerHTML = "";
+            })
+        }
+    )
+}
+
+
 
 getParameters();
 getApi();
