@@ -7,6 +7,11 @@
 
 // var apiUrl = '';
 
+// pulls search box values from first page to replicate results on second page
+var searchInput = $("#searchinput")
+var searchType = $("#searchtype")
+var searchButton = $("#submit-btn")
+
 var searchParam
 var type
 var searchResults = $("#search-cards")
@@ -31,7 +36,35 @@ var getParameters = function () {
 
 //fetch("https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast").then(res => res.json()).then(data => console.log(data))
 
+// copies from first page to make the search box work on the second page
+function submitSearch(){
 
+    // grab values of the input form, for both the category and the inputted search
+    var searchInputValue = searchInput.val();
+    var searchTypeValue = searchType.val();
+
+    // return errors if either category is blank
+    if(!searchInputValue){
+        alert("Please enter a value to search for.");
+        return;
+    } else if(!searchTypeValue){
+        alert("Please select a search category.");
+        return;
+    }
+
+    // redirect to second wepage, append ?category = search, for example ?i=chicken
+    var URLdirect = "./search-results.html?" + searchTypeValue + "=" + searchInputValue
+
+    // actual redirect
+    location.assign(URLdirect)
+}
+
+
+// add event listener to redirect on click without reloading
+searchButton.on("click", function(e){
+    e.preventDefault();
+    submitSearch();
+})
 
 var getApi = function () { 
     var apiUrl = 'https://www.themealdb.com/api/json/v1/1/' 
