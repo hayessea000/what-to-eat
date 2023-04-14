@@ -46,25 +46,17 @@
               <div class="control">
                 <h2 class="title">Search for a Recipe</h2>
                 <form id = "searchform">
-                  <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input"/>
-                  <select id = "searchtype">
+                  <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input mb-4"/>
+                  <select id = "searchtype" class="dropdown is-active mx-*-1">
+                    <div class="dropdown-trigger">
                       <option value="" disabled selected>Search by...</option>
                       <option value ="i">Ingredient</option>
                       <option value ="c">Category</option>
                       <option value ="a">Area</option>
                       <option value ="s">Name</option>
+                    </div>
                   </select>
-                    <button id = "submit-btn" type = "submit" class="button is-success">Search</button>
-
-                    <select id = "searchtype">
-                      <option value="" disabled selected>Search by...</option>
-                      <option value ="i">Ingredient</option>
-                      <option value ="c">Category</option>
-                      <option value ="a">Area</option>
-                      <option value ="s">Name</option>
-                  </select>
-                    <button id = "submit-btn" type = "submit" class="button is-success">Search</button>
-                    
+                    <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
                 </form>
               </div>
             </div>
