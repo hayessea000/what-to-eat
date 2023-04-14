@@ -1,29 +1,15 @@
-// var dropDown = document.querySelector('');
-// var searchFormEl = document.querySelector('');
-// var resultContentEl = document.querySelector('');
-// var resultTextEl = document.querySelector('');
-
-
-
-// var apiUrl = '';
-
 // pulls search box values from first page to replicate results on second page
 var searchInput = $("#searchinput")
 var searchType = $("#searchtype")
 var searchButton = $("#submit-btn")
-
 var searchParam
 var type
 var searchResults = $("#search-cards")
 var mealArr
 var recipe
 var searchCards
-
-// I = ingredient
-// C = category
-// A = are
-// S = name 
-
+var favMeals
+var savedRecipe =$("#saved-recipe")
 
 var getParameters = function () {
     searchParam = document.location.search.split('=');
@@ -84,6 +70,30 @@ var getApi = function () {
             console.log(mealArr)
             generateCards();
         })
+}
+
+var loadFav = function(){
+    savedRecipe.html("")
+    favMeals = JSON.parse(localStorage.getItem("favMeals"));
+    if(favMeals== null){
+        favMeals=[];
+    }
+    for(var i = 0; i< favMeals.length; i++){
+        savedRecipe =$("#saved-recipe")
+        var favCard= $("<div>");
+        var favImage = $("<img>");
+        favImage.attr("src", `${favMeals[i].image}`)
+        var favName = $("<p>");
+        favName.text(`${favMeals[i].name}`)
+        var favButton = $("<button>")
+        favButton.attr("data-value",`${favMeals[i].id}` )
+        favButton.addClass("foodCard")
+        favButton.text("Show the Recipe")
+        favCard.append(favImage);
+        favCard.append(favName);
+        favCard.append(favButton);
+        savedRecipe.append(favCard);
+    }
 }
 
 var generateCards = function(){
@@ -166,16 +176,29 @@ var generatefinalCard = function(){
 
     // saves to favorites sidebar, returns to results page
     var saveFavoritesButton = $("<button>")
-    saveFavoritesButton.html("Save to Favorites")
+    saveFavoritesButton.html("Save to Favorites and Return to Search Results")
     saveFavoritesButton.attr("id", "save-fav-btn")
-    saveFavoritesButton.on("click", function(e){
-        e.preventDefault();
-        console.log("click")
-    })
 
-    searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink, instructions, returnButton, saveFavoritesButton)
+    searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    var saveFavButton = $("#save-fav-btn");
+    saveFavButton.on("click", function(){
+        var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
+        if (favMeals.length<= 4){
+            favMeals.unshift(addFavMeals);
+        }else{
+            var scrap =favMeals.pop();
+            console.log(favMeals)
+            favMeals.unshift(addFavMeals);
+            console.log(favMeals)
+        }
+        localStorage.setItem("favMeals", JSON.stringify(favMeals));
+        loadFav();
+        searchResults.html("");
+        generateCards()
+    })
 }   
 
 
 getParameters();
+loadFav();
 getApi();
