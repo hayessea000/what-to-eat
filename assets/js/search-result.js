@@ -37,15 +37,15 @@ function submitSearch(){
         return;
     }
 
-    // redirect to second wepage, append ?category = search, for example ?i=chicken
+    // reload the second wepage, append search criteria
     var URLdirect = "./search-results.html?" + searchTypeValue + "=" + searchInputValue
 
-    // actual redirect
+    // actual search
     location.assign(URLdirect)
 }
 
 
-// add event listener to redirect on click without reloading
+// add event listener to search on click without reloading
 searchButton.on("click", function(e){
     e.preventDefault();
     submitSearch();
@@ -134,12 +134,16 @@ var generateCards = function(){
 }
 
 var generatefinalCard = function(){
+
+    // image of meal
     var recipeImage = $("<img>")
     recipeImage.attr("src", `${recipe[0].strMealThumb}`)
 
+    // name of meal
     var recipeTitle = $("<h3>")
     recipeTitle.text(`${recipe[0].strMeal}`)
 
+    // create list of ingredients, pull from object using the measurement and ingredient name
     var ingredientList = $("<ul>")
     
     for (var i = 1; i < 20; i++) {
@@ -152,10 +156,17 @@ var generatefinalCard = function(){
         ingredientList.append(ingredientItem)
        }
     }
+    
+    // add link to video of recipe
+    var videoLink = $("<a>")
+    videoLink.attr("href", `${recipe[0].strYoutube}`)
+    videoLink.html("Link to Video")
 
+    // add instructions in div
     var instructions = $("<div>")
     instructions.text(`${recipe[0].strInstructions}`)
 
+    // button to return to results page
     var returnButton = $("<button>")
     returnButton.html("Return to Search Results")
     returnButton.on("click", function(e){
@@ -163,11 +174,12 @@ var generatefinalCard = function(){
         generateCards();
     })
 
+    // saves to favorites sidebar, returns to results page
     var saveFavoritesButton = $("<button>")
     saveFavoritesButton.html("Save to Favorites and Return to Search Results")
     saveFavoritesButton.attr("id", "save-fav-btn")
 
-    searchResults.append(recipeImage, recipeTitle, ingredientList, instructions, returnButton, saveFavoritesButton)
+    searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
