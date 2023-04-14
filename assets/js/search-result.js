@@ -11,6 +11,8 @@ var searchParam
 var type
 var searchResults = $("#search-cards")
 var mealArr
+var recipe
+var searchCards
 
 // I = ingredient
 // C = category
@@ -53,7 +55,7 @@ var getApi = function () {
 
 var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
-        var searchCards = $("<section>")
+        searchCards = $("<section>")
         searchCards.attr("style", "margin: 10px;")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
@@ -77,15 +79,57 @@ var generateCards = function(){
                 return response.json();
             })
             .then (function (data){
-                var recipe = data.meals[0]
+                recipe = data.meals
                 console.log(recipe);
-                var leaderboard = document.querySelector("#search-cards");
-                leaderboard.innerHTML = "";
+
+                searchResults.html("")
+
+                generatefinalCard();
             })
         }
     )
 }
 
+var generatefinalCard = function(){
+    var recipeImage = $("<img>")
+    recipeImage.attr("src", `${recipe[0].strMealThumb}`)
+
+    var recipeTitle = $("<h3>")
+    recipeTitle.text(`${recipe[0].strMeal}`)
+
+    var ingredientList = $("<ul>")
+    
+    for (var i = 1; i < 20; i++) {
+       var strIngredientVar = recipe[0]['strIngredient' + i]
+       var strMeasureVar = recipe[0]['strMeasure' + i]
+
+       if(strIngredientVar !== "" && strMeasureVar !== ""){
+       var ingredientItem = $("<li>")
+        ingredientItem.text(strMeasureVar + " " + strIngredientVar)
+        ingredientList.append(ingredientItem)
+       }
+    }
+
+    var instructions = $("<div>")
+    instructions.text(`${recipe[0].strInstructions}`)
+
+    var returnButton = $("<button>")
+    returnButton.html("Return to Search Results")
+    returnButton.on("click", function(e){
+        searchResults.html("");
+        generateCards();
+    })
+
+    var saveFavoritesButton = $("<button>")
+    saveFavoritesButton.html("Save to Favorites")
+    saveFavoritesButton.attr("id", "save-fav-btn")
+    saveFavoritesButton.on("click", function(e){
+        e.preventDefault();
+        console.log("click")
+    })
+
+    searchResults.append(recipeImage, recipeTitle, ingredientList, instructions, returnButton, saveFavoritesButton)
+}   
 
 
 getParameters();
