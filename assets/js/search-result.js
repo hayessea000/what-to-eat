@@ -13,6 +13,7 @@ var searchResults = $("#search-cards")
 var mealArr
 var recipe
 var searchCards
+var favMeals
 
 // I = ingredient
 // C = category
@@ -51,6 +52,29 @@ var getApi = function () {
             console.log(mealArr)
             generateCards();
         })
+}
+
+var loadFav = function(){
+    favMeals = JSON.parse(localStorage.getItem("favMeals"));
+    if(favMeals== null){
+        favMeals=[];
+        // favMeals=[{name:test, image:test, id:test}];
+        // saved.push(scoreName);
+        // localStorage.setItem("hiScores", JSON.stringify(saved));
+    }
+    console.log(favMeals)
+    for(var i = 0; i< favMeals.length; i++){
+        var savedRecipe =$("#saved-recipe") /* change id in html and here*/
+        var favCard= $("<div>");
+        var favImage = $("<img>");
+        favImage.attr("src", `${favMeals[i].image}`)
+        var favName = $("<p>");
+        foodName.text(`${favMeals[i].name}`)
+        favCard.appendChild(favImage);
+        favCard.appendChild(favName);
+        savedRecipe.appendChild(favCard);
+    }
+    // title
 }
 
 var generateCards = function(){
@@ -133,4 +157,5 @@ var generatefinalCard = function(){
 
 
 getParameters();
+loadFav();
 getApi();
