@@ -79,7 +79,7 @@ var generateCards = function(){
                 return response.json();
             })
             .then (function (data){
-                recipe = data.meals[0]
+                recipe = data.meals
                 console.log(recipe);
 
                 searchResults.html("")
@@ -92,21 +92,43 @@ var generateCards = function(){
 
 var generatefinalCard = function(){
     var recipeImage = $("<img>")
-    recipeImage.attr("src", `${recipe.strMealThumb}`)
+    recipeImage.attr("src", `${recipe[0].strMealThumb}`)
 
     var recipeTitle = $("<h3>")
-    recipeTitle.text(`${recipe.strMeal}`)
+    recipeTitle.text(`${recipe[0].strMeal}`)
 
     var ingredientList = $("<ul>")
     
-    var ingredientItem = $("<li>")
-    ingredientItem.text(`${recipe.strMeasure1} ` + `${recipe.strIngredient1}`)
-    ingredientList.append(ingredientItem)
+    for (var i = 1; i < 20; i++) {
+       var strIngredientVar = recipe[0]['strIngredient' + i]
+       var strMeasureVar = recipe[0]['strMeasure' + i]
+
+       if(strIngredientVar !== "" && strMeasureVar !== ""){
+       var ingredientItem = $("<li>")
+        ingredientItem.text(strMeasureVar + " " + strIngredientVar)
+        ingredientList.append(ingredientItem)
+       }
+    }
 
     var instructions = $("<div>")
-    instructions.text(`${recipe.strInstructions}`)
+    instructions.text(`${recipe[0].strInstructions}`)
 
-    searchResults.append(recipeImage, recipeTitle, ingredientList, instructions)
+    var returnButton = $("<button>")
+    returnButton.html("Return to Search Results")
+    returnButton.on("click", function(e){
+        searchResults.html("");
+        generateCards();
+    })
+
+    var saveFavoritesButton = $("<button>")
+    saveFavoritesButton.html("Save to Favorites")
+    saveFavoritesButton.attr("id", "save-fav-btn")
+    saveFavoritesButton.on("click", function(e){
+        e.preventDefault();
+        console.log("click")
+    })
+
+    searchResults.append(recipeImage, recipeTitle, ingredientList, instructions, returnButton, saveFavoritesButton)
 }   
 
 
