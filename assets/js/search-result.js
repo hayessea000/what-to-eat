@@ -95,7 +95,6 @@ var loadFav = function(){
         // saved.push(scoreName);
         // localStorage.setItem("hiScores", JSON.stringify(saved));
     }
-    console.log(favMeals)
     for(var i = 0; i< favMeals.length; i++){
         var savedRecipe =$("#saved-recipe") /* change id in html and here*/
         var favCard= $("<div>");
@@ -186,6 +185,14 @@ var generatefinalCard = function(){
     })
 
     searchResults.append(recipeImage, recipeTitle, ingredientList, instructions, returnButton, saveFavoritesButton)
+        var sav
+    /** */test.on("click", function(event){
+        console.log("start")
+        var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
+        favMeals= favMeals.push(addFavMeals)
+        console.log(favMeals)
+    }
+)
 }   
 
 
