@@ -23,17 +23,23 @@
     <link href = "assets/css/bulma.css" rel = "stylesheet"/>
     <link href = "assets/css/bulma.css.map" rel = "stylesheet"/>
     <link href = "assets/css/bulma.min.css" rel = "stylesheet"/>
+     <link href = "assets/css/style.css" rel = "stylesheet"/>
     <!-- <link href = "assets/css/style.css" rel = "stylesheet"/> -->
     <title>What to Eat</title>
 </head>
 
 <body>
-  <section class="hero is-black">
+  <figure class = "image is square">
+        <img src="./assets/images/backgroundimage.jpg">
+    </figure>
+  <section class="hero is-transparent">
     <div class="hero-body">
-      <p class="title">
-        What to Eat
-      </p>
-      <p class="subtitle">A recipe finder based on the MealDB API</p>
+      <div class="opaque">
+        <p class="title">
+          What to Eat
+        </p>
+        <p class="subtitle">A recipe finder based on the MealDB API</p>
+      </div> 
     </div>
   </section>
 
@@ -49,6 +55,7 @@
                   <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input mb-4"/>
                   <select id = "searchtype" class="dropdown is-active mx-*-1">
                     <div class="dropdown-trigger">
+                      
                       <option value="" disabled selected>Search by...</option>
                       <option value ="i">Ingredient</option>
                       <option value ="c">Category</option>

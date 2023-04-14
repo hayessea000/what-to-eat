@@ -27,6 +27,8 @@
   <link href = "assets/css/bulma.css" rel = "stylesheet"/>
   <link href = "assets/css/bulma.css.map" rel = "stylesheet"/>
   <link href = "assets/css/bulma.min.css" rel = "stylesheet"/>
+  <link href = "assets/css/style.css" rel = "stylesheet"/>
+
 
   <!-- <link href = "assets/css/search-result.css" rel = "stylesheet"/>
   <link href = "assets/css/reset.css" rel = "stylesheet"/> -->
@@ -34,7 +36,10 @@
     <title>What to Eat Search Results</title>
 </head>
 <body>
-    <section class="hero is-black">
+    <figure class = "image is square">
+        <img src="./assets/images/backgroundimage.jpg">
+    </figure>
+    <section class="hero is-transparent">
         <div class="hero-body">
           <p class="title">
             What to Eat Search Results
@@ -53,15 +58,20 @@
                 <h2 class="title">Search for a Recipe</h2>
                 <form id = "searchform">
                     <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input mb-4"/>
-                    <select id = "searchtype" class="dropdown is-active mx-*-1">
-                    <div class="dropdown-trigger">
-                        <option value="" disabled selected>Search by...</option>
-                        <option value ="i">Ingredient</option>
-                        <option value ="c">Category</option>
-                        <option value ="a">Area</option>
-                        <option value ="s">Name</option>
+                    <div class="select is-primary mb-4">
+                        <select id = "searchtype" class="dropdown is-active mx-*-1 select is-primary">
+                            <div class="dropdown-trigger">
+                                <option value="" disabled selected>Search by...</option>
+                                <option value ="i">Ingredient</option>
+                                <option value ="c">Category</option>
+                                <option value ="a">Area</option>
+                                <option value ="s">Name</option>
+                            </div>
+                            </select>
                     </div>
-                    </select>
+
+
+                    
                     <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
                 </form>
                 </div>
