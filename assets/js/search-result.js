@@ -183,11 +183,13 @@ var generatefinalCard = function(){
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
-        if (favMeals.length<= 5){
-            favMeals.push(addFavMeals);
+        if (favMeals.length<= 4){
+            favMeals.unshift(addFavMeals);
         }else{
-            var scrap =favMeals.shift();
-            favMeals.push(addFavMeals);
+            var scrap =favMeals.pop();
+            console.log(favMeals)
+            favMeals.unshift(addFavMeals);
+            console.log(favMeals)
         }
         localStorage.setItem("favMeals", JSON.stringify(favMeals));
         loadFav();
