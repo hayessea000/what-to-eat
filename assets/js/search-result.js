@@ -87,8 +87,8 @@ var loadFav = function(){
         favName.text(`${favMeals[i].name}`)
         var favButton = $("<button>")
         favButton.attr("data-value",`${favMeals[i].id}` )
-        favButton.addClass("foodCard")
-        favButton.text("Show the Recipe")
+        favButton.addClass("foodCard button is-success mb-4")   
+        favButton.text("Show Recipe")
         favCard.append(favImage);
         favCard.append(favName);
         favCard.append(favButton);
@@ -106,7 +106,7 @@ var generateCards = function(){
         foodName.text(`${mealArr[i].strMeal}`)
         var foodButton = $("<button>")
         foodButton.attr("data-value",`${mealArr[i].idMeal}` )
-        foodButton.addClass("foodCard button is-success")
+        foodButton.addClass("foodCard button is-success mb-4")
         foodButton.text("Show Recipe")
         searchCards.append(foodImage)
         searchCards.append(foodName)
@@ -138,6 +138,7 @@ var generatefinalCard = function(){
     // image of meal
     var recipeImage = $("<img>")
     recipeImage.attr("src", `${recipe[0].strMealThumb}`)
+    recipeImage.addClass("image is-128x128")
 
     // name of meal
     var recipeTitle = $("<h3>")
@@ -168,6 +169,7 @@ var generatefinalCard = function(){
 
     // button to return to results page
     var returnButton = $("<button>")
+    returnButton.addClass("button is-success mgr-4")
     returnButton.html("Return to Search Results")
     returnButton.on("click", function(e){
         searchResults.html("");
@@ -178,9 +180,11 @@ var generatefinalCard = function(){
     var saveFavoritesButton = $("<button>")
     saveFavoritesButton.html("Save to Favorites and Return to Search Results")
     saveFavoritesButton.attr("id", "save-fav-btn")
+    saveFavoritesButton.addClass("button is-success mgr-4")
 
     searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
     var saveFavButton = $("#save-fav-btn");
+    saveFavButton.addClass("button is-success mb-4")
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
         if (favMeals.length<= 4){
