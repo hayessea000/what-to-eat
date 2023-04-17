@@ -202,3 +202,18 @@ var generatefinalCard = function(){
 getParameters();
 loadFav();
 getApi();
+
+$(document).on("click", ".foodCard",function(event){
+    var clickTarget =  event.target
+    var seachByName = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${clickTarget.getAttribute("data-value")}`
+    fetch(seachByName)
+    .then (function (response) {
+        return response.json();
+    })
+    .then (function (data){
+        recipe = data.meals
+        console.log(recipe);
+        searchResults.html("")
+        generatefinalCard();
+    })
+})
