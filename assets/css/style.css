@@ -7,7 +7,15 @@
     margin-left: auto;
   }
 
-  .opaque {
-    color: black;
-    opacity: 0.7;
+  #head-box{
+    display: flex;
+    justify-content: center;
+  }
+
+  #top-box{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    background: rgb(234, 240, 246, 0.8)
   }
