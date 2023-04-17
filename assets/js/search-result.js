@@ -85,28 +85,33 @@ var loadFav = function(){
         favImage.attr("src", `${favMeals[i].image}`)
         var favName = $("<p>");
         favName.text(`${favMeals[i].name}`)
+        favName.addClass("mb-4")
         var favButton = $("<button>")
         favButton.attr("data-value",`${favMeals[i].id}` )
-        favButton.addClass("foodCard button is-success mb-4")   
+        favButton.addClass("foodCard button is-success mb-4")
         favButton.text("Show Recipe")
         favCard.append(favImage);
         favCard.append(favName);
         favCard.append(favButton);
+        favCard.addClass("box")
         savedRecipe.append(favCard);
     }
 }
 
 var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
-        searchCards = $("<section>")
-        searchCards.attr("style", "margin: 10px;")
+        searchCards = $("<div>")
+        searchCards.attr("style", "margin: 10px; height: 350px; width: 270px; padding: 10px;")
+        searchCards.addClass("notification box is-flexwrap-wrap")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
+        foodImage.attr("style", "height; 220px; width:220px;")
         var foodName = $("<p>")
+        foodName.attr("style", "padding: 10px;")
         foodName.text(`${mealArr[i].strMeal}`)
         var foodButton = $("<button>")
         foodButton.attr("data-value",`${mealArr[i].idMeal}` )
-        foodButton.addClass("foodCard button is-success mb-4")
+        foodButton.addClass("foodCard button is-success ml-4 mb-4")
         foodButton.text("Show Recipe")
         searchCards.append(foodImage)
         searchCards.append(foodName)
@@ -138,7 +143,6 @@ var generatefinalCard = function(){
     // image of meal
     var recipeImage = $("<img>")
     recipeImage.attr("src", `${recipe[0].strMealThumb}`)
-    recipeImage.addClass("image is-128x128")
 
     // name of meal
     var recipeTitle = $("<h3>")
@@ -169,8 +173,8 @@ var generatefinalCard = function(){
 
     // button to return to results page
     var returnButton = $("<button>")
-    returnButton.addClass("button is-success mgr-4")
     returnButton.html("Return to Search Results")
+    returnButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
     returnButton.on("click", function(e){
         searchResults.html("");
         generateCards();
@@ -178,13 +182,12 @@ var generatefinalCard = function(){
 
     // saves to favorites sidebar, returns to results page
     var saveFavoritesButton = $("<button>")
-    saveFavoritesButton.html("Save to Favorites and Return to Search Results")
+    saveFavoritesButton.html("Save to Favorites")
     saveFavoritesButton.attr("id", "save-fav-btn")
-    saveFavoritesButton.addClass("button is-success mgr-4")
+    saveFavoritesButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
 
     searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
     var saveFavButton = $("#save-fav-btn");
-    saveFavButton.addClass("button is-success mb-4")
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
         if (favMeals.length<= 4){
@@ -197,8 +200,6 @@ var generatefinalCard = function(){
         }
         localStorage.setItem("favMeals", JSON.stringify(favMeals));
         loadFav();
-        searchResults.html("");
-        generateCards()
     })
 }   
 
@@ -206,3 +207,18 @@ var generatefinalCard = function(){
 getParameters();
 loadFav();
 getApi();
+
+$(document).on("click", ".foodCard",function(event){
+    var clickTarget =  event.target
+    var seachByName = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${clickTarget.getAttribute("data-value")}`
+    fetch(seachByName)
+    .then (function (response) {
+        return response.json();
+    })
+    .then (function (data){
+        recipe = data.meals
+        console.log(recipe);
+        searchResults.html("")
+        generatefinalCard();
+    })
+})

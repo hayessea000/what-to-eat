@@ -29,12 +29,9 @@
 </head>
 
 <body>
-  <!-- Background image -->
-  <figure id="background-image" class = "image is square">
+  <figure class = "image is square">
         <img src="./assets/images/backgroundimage.jpg">
     </figure>
-
-    <!-- Transparent header -->
   <section class="hero is-transparent">
     <div class="hero-body">
       <div class="opaque">
@@ -46,53 +43,42 @@
     </div>
   </section>
 
-  <!-- Initial container -->
   <section class="section">
-    <div class="tile is-ancestor notification is-light">
-      <div class="tile is-vertical is-12">
+    <div class="tile is-ancestor is-transparent">
+      <div class="tile is-vertical is-3">
         <div class="tile">
-          <!-- Verticle section on the left -->
           <div class="tile is-parent is-vertical">
-            <div class="field is-child notification is-white">
+            <div class="field is-child box notification is-white">
               <div class="control">
                 <h2 class="title">Search for a Recipe</h2>
-                <form id = "searchform">
-                  <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input mb-4"/>
+                <form id="searchform">
+                  <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
                   <div class="select is-primary mb-4">
-                    <div class="select is-primary mb-4">
-                      <select id = "searchtype" class="dropdown is-active mx-*-1 select is-primary">
-                          <div class="dropdown-trigger">
-                              <option value="" disabled selected>Search by...</option>
-                              <option value ="i">Ingredient</option>
-                              <option value ="c">Category</option>
-                              <option value ="a">Area</option>
-                              <option value ="s">Name</option>
-                          </div>
-                      </select>
-                      <button id = "submit-btn" type = "submit" class="button is-success mt-4">Search</button><br/>
-                    </div>  
+                    <select id = "searchtype" class="dropdown is-active mx-*-1 select is-success">
+                        <div class="dropdown-trigger">
+                            <option value="" disabled selected>Search by...</option>
+                            <option value ="i">Ingredient</option>
+                            <option value ="c">Category</option>
+                            <option value ="a">Area</option>
+                            <option value ="s">Name</option>
+                        </div>
+                        </select>
+                </div>
+                    <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
                 </form>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
-
-
-
-        
-
-
+  
     <div>
         <!-- <h1>What to Eat</h1>
         <h2>A recipe finder based on MealDB API</h2>
 
         <p>This is a recipe finder based on the MealDB API. To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p> -->
-
 
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

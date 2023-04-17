@@ -36,12 +36,9 @@
     <title>What to Eat Search Results</title>
 </head>
 <body>
-    <!-- Background image -->
-    <figure id="background-image" class="image is square">
+    <figure class = "image is square">
         <img src="./assets/images/backgroundimage.jpg">
     </figure>
-
-    <!-- Transparent header -->
     <section class="hero is-transparent">
         <div class="hero-body">
           <p class="title">
@@ -51,19 +48,18 @@
         </div>
       </section>
 
-      <!-- Initial container -->
       <section class="section">
-        <div class="tile is-ancestor notification is-light">
+        <div class="tile is-ancestor is-transparent">
 
             <!-- Vertical section on the left -->
-        <div class="tile is-parent is-vertical is-3 mr-2 notification is-black">
+        <div class="tile is-parent is-vertical is-3 mr-5 notification is-black">
             <div class="field is-child notification is-white">
-                <div class="control">
+                <div class="control box">
                 <h2 class="title">Search for a Recipe</h2>
                 <form id = "searchform">
-                  <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="input mb-4"/>
+                    <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
                     <div class="select is-primary mb-4">
-                        <select id = "searchtype" class="dropdown is-active mx-*-1 select is-primary">
+                        <select id = "searchtype" class="dropdown is-active mx-*-1 select is-success">
                             <div class="dropdown-trigger">
                                 <option value="" disabled selected>Search by...</option>
                                 <option value ="i">Ingredient</option>
@@ -72,13 +68,11 @@
                                 <option value ="s">Name</option>
                             </div>
                             </select>
-                    </div>
+                    </div>            
                     <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
                 </form>
                 </div>
             </div>
-
-            <!-- Saved meals section on the left -->
             <div class="field is-child notification is-white">
                 <div class="control">
                     <h2 class="title">Saved Meals</h2>
@@ -91,16 +85,16 @@
 
           <!-- Right side of page -->
           <div class="tile is-parent notification is-black">
-            <div class="tile is-child notification is-white">
-                <div class="row">
-                    <div class="tile">
-                        <!-- <p>To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p>     -->
+            <section class="tile is-child notification is-white">
+                <div class="tile container level">
+                    <div>
+                        <!-- <p>To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p> -->    
                     </div>
-                    <div class="tile" id = "search-cards">
+                    <div id="search-cards" class="tile level-item has-text-centered is-flex-wrap-wrap">
     
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
         </div>
       </section>
