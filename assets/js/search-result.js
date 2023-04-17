@@ -176,7 +176,7 @@ var generatefinalCard = function(){
 
     // saves to favorites sidebar, returns to results page
     var saveFavoritesButton = $("<button>")
-    saveFavoritesButton.html("Save to Favorites and Return to Search Results")
+    saveFavoritesButton.html("Save to Favorites")
     saveFavoritesButton.attr("id", "save-fav-btn")
 
     searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
@@ -193,8 +193,6 @@ var generatefinalCard = function(){
         }
         localStorage.setItem("favMeals", JSON.stringify(favMeals));
         loadFav();
-        searchResults.html("");
-        generateCards()
     })
 }   
 
