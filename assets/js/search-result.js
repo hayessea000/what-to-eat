@@ -102,7 +102,7 @@ var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
         searchCards = $("<div>")
         searchCards.attr("style", "margin: 10px; height: 350px; width: 270px; padding: 10px;")
-        searchCards.addClass("notification box is-flexwrap-wrap")
+        searchCards.addClass("notification box")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
         foodImage.attr("style", "height; 220px; width:220px;")
@@ -186,7 +186,11 @@ var generatefinalCard = function(){
     saveFavoritesButton.attr("id", "save-fav-btn")
     saveFavoritesButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
 
-    searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    var finalCard = $("<div>")
+
+    
+    finalCard.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    searchResults.append(finalCard)
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
