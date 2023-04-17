@@ -85,29 +85,34 @@ var loadFav = function(){
         favImage.attr("src", `${favMeals[i].image}`)
         var favName = $("<p>");
         favName.text(`${favMeals[i].name}`)
+        favName.addClass("mb-4")
         var favButton = $("<button>")
         favButton.attr("data-value",`${favMeals[i].id}` )
-        favButton.addClass("foodCard")
-        favButton.text("Show the Recipe")
+        favButton.addClass("foodCard button is-success mb-4")
+        favButton.text("Show Recipe")
         favCard.append(favImage);
         favCard.append(favName);
         favCard.append(favButton);
+        favCard.addClass("box")
         savedRecipe.append(favCard);
     }
 }
 
 var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
-        searchCards = $("<section>")
-        searchCards.attr("style", "margin: 10px;")
+        searchCards = $("<div>")
+        searchCards.attr("style", "margin: 10px; height: 350px; width: 270px; padding: 10px;")
+        searchCards.addClass("notification box is-flexwrap-wrap")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
+        foodImage.attr("style", "height; 220px; width:220px;")
         var foodName = $("<p>")
+        foodName.attr("style", "padding: 10px;")
         foodName.text(`${mealArr[i].strMeal}`)
         var foodButton = $("<button>")
         foodButton.attr("data-value",`${mealArr[i].idMeal}` )
-        foodButton.addClass("foodCard")
-        foodButton.text("Show the Recipe")
+        foodButton.addClass("foodCard button is-success ml-4 mb-4")
+        foodButton.text("Show Recipe")
         searchCards.append(foodImage)
         searchCards.append(foodName)
         searchCards.append(foodButton)
@@ -169,6 +174,7 @@ var generatefinalCard = function(){
     // button to return to results page
     var returnButton = $("<button>")
     returnButton.html("Return to Search Results")
+    returnButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
     returnButton.on("click", function(e){
         searchResults.html("");
         generateCards();
@@ -178,6 +184,7 @@ var generatefinalCard = function(){
     var saveFavoritesButton = $("<button>")
     saveFavoritesButton.html("Save to Favorites")
     saveFavoritesButton.attr("id", "save-fav-btn")
+    saveFavoritesButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
 
     searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
     var saveFavButton = $("#save-fav-btn");
