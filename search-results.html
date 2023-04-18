@@ -6,108 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-
-  <link
+    <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous"
-  />
-  <link
+    />
+    <link
     href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
     rel="stylesheet"
-  />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
-
-  <link href = "assets/css/bulma-rtl.css" rel = "stylesheet"/>
-  <link href = "assets/css/bulma-rtl.css.map" rel = "stylesheet"/>
-  <link href = "assets/css/bulma-rtl.min.css" rel = "stylesheet"/>
-  <link href = "assets/css/bulma.css" rel = "stylesheet"/>
-  <link href = "assets/css/bulma.css.map" rel = "stylesheet"/>
-  <link href = "assets/css/bulma.min.css" rel = "stylesheet"/>
-  <link href = "assets/css/style.css" rel = "stylesheet"/>
-
-
-  <!-- <link href = "assets/css/search-result.css" rel = "stylesheet"/>
-  <link href = "assets/css/reset.css" rel = "stylesheet"/> -->
-
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
+    <link href = "assets/css/style.css" rel = "stylesheet"/>
     <title>What to Eat Search Results</title>
 </head>
 <body>
-    <figure class = "image is square">
-        <img src="./assets/images/backgroundimage.jpg">
-    </figure>
-    <section class="hero is-transparent" id="head-box">
-        <div class="hero-body" id="head-box">
-          <div id="top-box">
-            <p class="appname is-1">
-              What to Eat
-            </p>
-            <p class="subheader is-3">A recipe finder based on the MealDB API</p>
+  <figure class = "image is square">
+      <img src="./assets/images/backgroundimage.jpg">
+  </figure>
+  <section class="hero is-transparent" id="head-box">
+      <div class="hero-body" id="head-box">
+        <div id="top-box">
+          <p class="appname is-1">
+            What to Eat
+          </p>
+          <p class="subheader is-3">A recipe finder based on the MealDB API</p>
+        </div>
+      </div>
+  </section>
+
+  <section class="section">
+    <div class="tile is-ancestor is-transparent">
+      <!-- Vertical section on the left -->
+      <div class="tile is-parent is-vertical is-3 mr-5">
+        <div class="field is-child mb-5">
+          <div class="control box notification is-transparent">
+            <h2 class="title">Search for a Recipe</h2>
+            <form id = "searchform">
+              <p class="help is-dark has-text-centered">Enter the criteria to search for (ex: chicken or Mexican)</p>
+              <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
+              <p class="help is-dark">Select a category to search by</p>
+              <div class="select is-success mb-4 mr-2">
+                <select id = "searchtype" class="dropdown is-active mx-*-1 select is-success">
+                  <div class="dropdown-trigger">
+                    <option value="" disabled selected>Search by...</option>
+                    <option value ="i">Ingredient</option>
+                    <option value ="c">Category</option>
+                    <option value ="a">Area</option>
+                    <option value ="s">Name</option>
+                  </div>
+                </select>
+              </div>            
+              <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
+            </form>
           </div>
         </div>
-    </section>
-
-      <section class="section">
-        <div class="tile is-ancestor is-transparent">
-            <!-- Vertical section on the left -->
-        <div class="tile is-parent is-vertical is-3 mr-5">
-            <div class="field is-child mb-5">
-                <div class="control box notification is-transparent">
-                <h2 class="title">Search for a Recipe</h2>
-                <form id = "searchform">
-                  <p class="help is-dark has-text-centered">Enter the criteria to search for (ex: chicken or Mexican)</p>
-                    <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
-                    <p class="help is-dark">Select a category to search by</p>
-                    <div class="select is-success mb-4 mr-2">
-                        <select id = "searchtype" class="dropdown is-active mx-*-1 select is-success">
-                            <div class="dropdown-trigger">
-                                <option value="" disabled selected>Search by...</option>
-                                <option value ="i">Ingredient</option>
-                                <option value ="c">Category</option>
-                                <option value ="a">Area</option>
-                                <option value ="s">Name</option>
-                            </div>
-                            </select>
-                    </div>            
-                    <button id = "submit-btn" type = "submit" class="button is-success">Search</button><br/>
-                </form>
+        <div class="field is-child box notification is-transparent">
+          <div class="control">
+            <h2 class="title">Saved Meals</h2>
+            <p>The Last 5 Saved Are Shown Below</p>
+            <div id="saved-recipe">
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Right side of page -->
+      <div class="tile is-parent is-transparent">
+        <section class="tile is-child is-transparent">
+          <div class="notification is-transparent box">
+            <h2 class="title ml-5">Search Results</h2>
+            <div class="tile container level">
+                <div id="search-cards" class="tile level-item is-white has-text-centered is-flex-wrap-wrap">
                 </div>
             </div>
-            <div class="field is-child box notification is-transparent">
-                <div class="control">
-                    <h2 class="title">Saved Meals</h2>
-                    <p>The Last 5 Saved Are Shown Below</p>
-                    <div id="saved-recipe">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          <!-- Right side of page -->
-          <div class="tile is-parent is-transparent">
-            <section class="tile is-child is-transparent">
-              <div class="notification is-transparent box">
-                <h2 class="title ml-5">Search Results</h2>
-                <div class="tile container level">
-                    <div id="search-cards" class="tile level-item is-white has-text-centered is-flex-wrap-wrap">
-                    </div>
-                </div>
-              </div>
-            </section>
-        </div>
-        </div>
-      </section>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/search-result.js"></script>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/search-result.js"></script>
 </body>
 </html>

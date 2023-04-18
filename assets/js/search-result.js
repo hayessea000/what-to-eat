@@ -13,13 +13,9 @@ var savedRecipe =$("#saved-recipe")
 
 var getParameters = function () {
     searchParam = document.location.search.split('=');
-
     type = searchParam[0].split('').pop()
-
     searchParam [0] = type
 }
-
-//fetch("https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast").then(res => res.json()).then(data => console.log(data))
 
 // copies from first page to make the search box work on the second page
 function submitSearch(){
@@ -44,7 +40,6 @@ function submitSearch(){
     location.assign(URLdirect)
 }
 
-
 // add event listener to search on click without reloading
 searchButton.on("click", function(e){
     e.preventDefault();
@@ -59,8 +54,6 @@ var getApi = function () {
         apiUrl = apiUrl + "filter.php?"
     }
     apiUrl = apiUrl + type + "=" + searchParam[1] 
-    console.log(apiUrl)
-
     fetch(apiUrl)
         .then (function (response) {
             return response.json();
@@ -68,7 +61,6 @@ var getApi = function () {
         .then (function (data){
             mealArr = data.meals
             if(mealArr!== null){
-                console.log(mealArr)
                 generateCards();
             }else{
                 alert("No Search Results Found Try Again");
@@ -135,10 +127,7 @@ var generateCards = function(){
             })
             .then (function (data){
                 recipe = data.meals
-                console.log(recipe);
-
                 searchResults.html("")
-
                 generatefinalCard();
             })
         }
@@ -177,10 +166,7 @@ var generatefinalCard = function(){
     videoUrl.split("=").pop()
     var videoLink = $(`<iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/${videoUrl.split("=").pop()}"
     frameborder="0"></iframe>`)
-    // var videoLink = $("<a>")
-    // videoLink.attr("href", `${recipe[0].strYoutube}`)
-    // videoLink.html("Link to Video")
-
+    
     // add instructions in div
     var instructions = $("<div>")
     instructions.addClass("mt-4")
@@ -203,9 +189,11 @@ var generatefinalCard = function(){
 
     var finalCard = $("<div>")
     var buttonsDiv =$("<div>")
+
     buttonsDiv.append(saveFavoritesButton, returnButton)
     finalCard.append(recipeImage, recipeTitle, ingredientList, instructions, buttonsDiv, videoLink)
     searchResults.append(finalCard)
+
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};
@@ -213,9 +201,7 @@ var generatefinalCard = function(){
             favMeals.unshift(addFavMeals);
         }else{
             var scrap =favMeals.pop();
-            console.log(favMeals)
             favMeals.unshift(addFavMeals);
-            console.log(favMeals)
         }
         localStorage.setItem("favMeals", JSON.stringify(favMeals));
         loadFav();
@@ -236,7 +222,6 @@ $(document).on("click", ".foodCard",function(event){
     })
     .then (function (data){
         recipe = data.meals
-        console.log(recipe);
         searchResults.html("")
         generatefinalCard();
     })
