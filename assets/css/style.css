@@ -10,6 +10,7 @@
   #head-box{
     display: flex;
     justify-content: center;
+    margin: 20px;
   }
 
   #top-box{
@@ -18,4 +19,9 @@
     width: 75%;
     align-items: center;
     background: rgb(234, 240, 246, 0.7)
+  }
+
+  .appname {
+    font-family: 'Headland One', serif;
+    font-size: 500%;
   }
