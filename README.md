@@ -6,7 +6,7 @@ We set off to build a website that can help a user find a meal using simple sear
 
 ## Technologies Utilized
 
-the page utilizes HTML, CSS, Javascript, jquery, Bulma
+the page utilizes HTML, CSS, Javascript, Bootstrap, jquery, Bulma
 
 ## What we learned
 
@@ -36,14 +36,13 @@ The webpage will load saved recipes from previous uses. Previously saved recipes
 
 ## Webpage 
 
-https://github.com/hayessea000/what-to-eat
+https://hayessea000.github.io/what-to-eat
 
-
-![Here's a screenshot of our full webpage](./assets/images/)
 
 ## Credits 
 Sean Hayes
 Marlena Keller
 Annie Ashley
-Jill Revak
 Aurelio Cotroneo
+
+![Here's a screenshot of our full webpage](./assets/images/_Users_aureliocotroneo_bootcamp_UofM-VIRT-FSF-FT-03-2023-U-LOLC_ProjectX_what-to-eat_search-results.html_c%3Dchicken.png)
