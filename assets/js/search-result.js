@@ -67,8 +67,13 @@ var getApi = function () {
         })
         .then (function (data){
             mealArr = data.meals
-            console.log(mealArr)
-            generateCards();
+            if(mealArr!== null){
+                console.log(mealArr)
+                generateCards();
+            }else{
+                alert("No Search Results Found Try Again");
+        return;
+            }
         })
 }
 
@@ -168,9 +173,13 @@ var generatefinalCard = function(){
     }
     
     // add link to video of recipe
-    var videoLink = $("<a>")
-    videoLink.attr("href", `${recipe[0].strYoutube}`)
-    videoLink.html("Link to Video")
+    var videoUrl=recipe[0].strYoutube
+    videoUrl.split("=").pop()
+    var videoLink = $(`<iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/${videoUrl.split("=").pop()}"
+    frameborder="0"></iframe>`)
+    // var videoLink = $("<a>")
+    // videoLink.attr("href", `${recipe[0].strYoutube}`)
+    // videoLink.html("Link to Video")
 
     // add instructions in div
     var instructions = $("<div>")
@@ -193,9 +202,9 @@ var generatefinalCard = function(){
     saveFavoritesButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
 
     var finalCard = $("<div>")
-
-    
-    finalCard.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    var buttonsDiv =$("<div>")
+    buttonsDiv.append(saveFavoritesButton, returnButton)
+    finalCard.append(recipeImage, recipeTitle, ingredientList, instructions, buttonsDiv, videoLink)
     searchResults.append(finalCard)
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
