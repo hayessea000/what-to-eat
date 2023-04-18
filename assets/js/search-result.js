@@ -164,7 +164,7 @@ var generatefinalCard = function(){
     // add link to video of recipe
     var videoUrl=recipe[0].strYoutube
     videoUrl.split("=").pop()
-    var videoLink = $(`<iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/${videoUrl.split("=").pop()}"
+    var videoLink = $(`<iframe id="player" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/${videoUrl.split("=").pop()}"
     frameborder="0"></iframe>`)
     
     // add instructions in div
