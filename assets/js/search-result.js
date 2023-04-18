@@ -142,14 +142,17 @@ var generatefinalCard = function(){
 
     // image of meal
     var recipeImage = $("<img>")
+    recipeImage.addClass("box")
     recipeImage.attr("src", `${recipe[0].strMealThumb}`)
 
     // name of meal
     var recipeTitle = $("<h3>")
     recipeTitle.text(`${recipe[0].strMeal}`)
+    recipeTitle.addClass("title mt-4 mb-5")
 
     // create list of ingredients, pull from object using the measurement and ingredient name
     var ingredientList = $("<ul>")
+    ingredientList.addClass("mb-4")
     
     for (var i = 1; i < 20; i++) {
        var strIngredientVar = recipe[0]['strIngredient' + i]
@@ -169,6 +172,7 @@ var generatefinalCard = function(){
 
     // add instructions in div
     var instructions = $("<div>")
+    instructions.addClass("mt-4")
     instructions.text(`${recipe[0].strInstructions}`)
 
     // button to return to results page
