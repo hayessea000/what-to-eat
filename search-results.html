@@ -55,10 +55,10 @@
             <!-- Vertical section on the left -->
         <div class="tile is-parent is-vertical is-3 mr-5">
             <div class="field is-child mb-5">
-                <div class="control box">
+                <div class="control box notification is-transparent">
                 <h2 class="title">Search for a Recipe</h2>
                 <form id = "searchform">
-                  <p class="help is-dark">Enter the criteria to search for (ex: chicken)</p>
+                  <p class="help is-dark has-text-centered">Enter the criteria to search for (ex: chicken)</p>
                     <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
                     <p class="help is-dark">Select a category to search by</p>
                     <div class="select is-success mb-4 mr-2">
@@ -87,15 +87,15 @@
         </div>
 
           <!-- Right side of page -->
-          <div class="tile is-parent">
-            <section class="tile is-child">
-              <div class="is-white box">
+          <div class="tile is-parent is-transparent">
+            <section class="tile is-child is-transparent">
+              <div class="notification is-transparent box">
                 <h2 class="title">Search Results</h2>
                 <div class="tile container level">
                     <div>
                         <!-- <p>To start, select a category to search by and enter what criteria you want to search for. For example, for a category of "Ingredient", a valid category would be "chicken breast". Try it out!</p> -->    
                     </div>
-                    <div id="search-cards" class="tile level-item has-text-centered is-flex-wrap-wrap">
+                    <div id="search-cards" class="tile level-item is-white has-text-centered is-flex-wrap-wrap">
                     </div>
                 </div>
               </div>

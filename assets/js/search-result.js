@@ -80,6 +80,7 @@ var loadFav = function(){
     }
     for(var i = 0; i< favMeals.length; i++){
         savedRecipe =$("#saved-recipe")
+        savedRecipe.addClass("has-text-centered")
         var favCard= $("<div>");
         var favImage = $("<img>");
         favImage.attr("src", `${favMeals[i].image}`)
@@ -102,16 +103,17 @@ var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
         searchCards = $("<div>")
         searchCards.attr("style", "margin: 10px; height: 350px; width: 270px; padding: 10px;")
-        searchCards.addClass("notification box")
+        searchCards.addClass("notification is-white box")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
         foodImage.attr("style", "height; 220px; width:220px;")
+        foodImage.addClass("mt-3")
         var foodName = $("<p>")
         foodName.attr("style", "padding: 10px;")
         foodName.text(`${mealArr[i].strMeal}`)
         var foodButton = $("<button>")
         foodButton.attr("data-value",`${mealArr[i].idMeal}` )
-        foodButton.addClass("foodCard button is-success ml-4 mb-4")
+        foodButton.addClass("foodCard button is-success mb-4")
         foodButton.text("Show Recipe")
         searchCards.append(foodImage)
         searchCards.append(foodName)
