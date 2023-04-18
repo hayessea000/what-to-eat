@@ -80,6 +80,7 @@ var loadFav = function(){
     }
     for(var i = 0; i< favMeals.length; i++){
         savedRecipe =$("#saved-recipe")
+        savedRecipe.addClass("has-text-centered")
         var favCard= $("<div>");
         var favImage = $("<img>");
         favImage.attr("src", `${favMeals[i].image}`)
@@ -102,16 +103,17 @@ var generateCards = function(){
     for (var i = 0; i < mealArr.length; i++){
         searchCards = $("<div>")
         searchCards.attr("style", "margin: 10px; height: 350px; width: 270px; padding: 10px;")
-        searchCards.addClass("notification box is-flexwrap-wrap")
+        searchCards.addClass("notification is-white box")
         var foodImage = $("<img>")
         foodImage.attr("src", `${mealArr[i].strMealThumb}`)
         foodImage.attr("style", "height; 220px; width:220px;")
+        foodImage.addClass("mt-3")
         var foodName = $("<p>")
         foodName.attr("style", "padding: 10px;")
         foodName.text(`${mealArr[i].strMeal}`)
         var foodButton = $("<button>")
         foodButton.attr("data-value",`${mealArr[i].idMeal}` )
-        foodButton.addClass("foodCard button is-success ml-4 mb-4")
+        foodButton.addClass("foodCard button is-success mb-4")
         foodButton.text("Show Recipe")
         searchCards.append(foodImage)
         searchCards.append(foodName)
@@ -142,14 +144,17 @@ var generatefinalCard = function(){
 
     // image of meal
     var recipeImage = $("<img>")
+    recipeImage.addClass("box")
     recipeImage.attr("src", `${recipe[0].strMealThumb}`)
 
     // name of meal
     var recipeTitle = $("<h3>")
     recipeTitle.text(`${recipe[0].strMeal}`)
+    recipeTitle.addClass("title mt-4 mb-5")
 
     // create list of ingredients, pull from object using the measurement and ingredient name
     var ingredientList = $("<ul>")
+    ingredientList.addClass("mb-4")
     
     for (var i = 1; i < 20; i++) {
        var strIngredientVar = recipe[0]['strIngredient' + i]
@@ -169,6 +174,7 @@ var generatefinalCard = function(){
 
     // add instructions in div
     var instructions = $("<div>")
+    instructions.addClass("mt-4")
     instructions.text(`${recipe[0].strInstructions}`)
 
     // button to return to results page
@@ -186,7 +192,11 @@ var generatefinalCard = function(){
     saveFavoritesButton.attr("id", "save-fav-btn")
     saveFavoritesButton.addClass("button is-success ml-4 mt-4 mr-4 mb-4")
 
-    searchResults.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    var finalCard = $("<div>")
+
+    
+    finalCard.append(recipeImage, recipeTitle, ingredientList, videoLink,instructions, returnButton, saveFavoritesButton)
+    searchResults.append(finalCard)
     var saveFavButton = $("#save-fav-btn");
     saveFavButton.on("click", function(){
         var addFavMeals={name: recipe[0].strMeal, image: recipe[0].strMealThumb, id: recipe[0].idMeal};

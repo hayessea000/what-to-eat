@@ -48,12 +48,14 @@
       <div class="tile is-vertical is-3">
         <div class="tile">
           <div class="tile is-parent is-vertical">
-            <div class="field is-child box notification is-white">
+            <div class="field is-child box notification is-">
               <div class="control">
                 <h2 class="title">Search for a Recipe</h2>
                 <form id="searchform">
+                  <p class="help is-dark has-text-centered">Enter the criteria to search for (ex: chicken)</p>
                   <input type ="text" placeholder = "Search Criteria" id = "searchinput" class="box input mb-4"/>
-                  <div class="select is-primary mb-4">
+                  <p class="help is-dark">Select a category to search by</p>
+                  <div class="select is-success mb-4 mr-2">
                     <select id = "searchtype" class="dropdown is-active mx-*-1 select is-success">
                         <div class="dropdown-trigger">
                             <option value="" disabled selected>Search by...</option>
