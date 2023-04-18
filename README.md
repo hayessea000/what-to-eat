@@ -18,7 +18,7 @@ GIVEN I am using a search tool to find a meal to eat
 WHEN I search for meals or recipes
 THEN I am presented with a variety of different meals that pertain to my search criteria
 WHEN I click the show recipe button on a recipe
-THEN The ingridient list and recipe will drop down
+THEN The ingredient list and recipe will drop down
 WHEN I click return to results
 THEN The search results will display
 WHEN I click the save button 
@@ -28,7 +28,7 @@ THEN The saved recipes persist
 
 ## Struggles
 
-The biggest struggles we ran into as a group in this project were learning, and utilizing new technologies for our website, varying degrees of experience and knowledge writing code and working in a develper mindset. Balancing workload across different files to minimize merge conflicts etc. Finding and utilizing strong points in team members. Transitioning from working generally alone to a team environment. 
+The biggest struggles we ran into as a group in this project were learning, and utilizing new technologies for our website, varying degrees of experience and knowledge writing code and working in a developer mindset. Balancing workload across different files to minimize merge conflicts etc. Finding and utilizing strong points in team members. Transitioning from working generally alone to a team environment. 
 
 ## Usage
 
