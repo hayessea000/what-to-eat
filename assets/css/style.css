@@ -24,4 +24,12 @@
   .appname {
     font-family: 'Headland One', serif;
     font-size: 500%;
+    font-weight: bold;
+    align-items: center;
+  }
+
+  .subheader {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 100%;
   }
