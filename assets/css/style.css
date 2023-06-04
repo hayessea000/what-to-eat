@@ -7,16 +7,21 @@
     margin-left: auto;
   }
 
+  .header-img {
+    margin:auto;
+    max-width: 75%;
+  }
+
   #head-box{
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 10px;
   }
 
   #top-box{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 65%;
     align-items: center;
     background: rgb(234, 240, 246, 0.7)
   }
